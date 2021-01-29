@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "aws-sdk": ">=2.0.0-rc13",
-    "commander": "2.*",
+    "commander": "6.*",
     "dynamodb-marshaler": "^2.0.0",
     "papaparse": "^5.3.0"
   }
