@@ -91,9 +91,26 @@ const query = {
   Limit: 1000
 };
 
+
+const formatDate = (date) => {
+  const month   = date.getUTCMonth() + 10; // months from 1-12
+  const day     = date.getUTCDate();
+  const year    = date.getUTCFullYear();
+
+// Using padded values, so that 2023-1-7 becomes 2023-01-07
+  const pMonth    = month.toString().padStart(2,"0");
+  const pDay      = day.toString().padStart(2,"0");
+  return`${year}-${pMonth}-${pDay}`;
+}
+var currentDate = formatDate(new Date());
+var priorDate = formatDate(new Date(new Date().setDate(new Date().getDate() - 30)));
+
 const scanQuery = {
   TableName: program.table,
   IndexName: program.index,
+  ExpressionAttributeNames:  {"#n0":"date"},
+  ExpressionAttributeValues:{":v0":{"S":priorDate},":v0p2":{"S":currentDate}},
+  FilterExpression:"#n0 BETWEEN :v0 AND :v0p2",
   Limit: 1000
 };
 
