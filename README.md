@@ -12,11 +12,11 @@ This software is governed by the Apache 2.0 license.
 
 typically, to use you'd run:
 
-    node dynamoDBtoCSV.js -t Hourly_ZEDO_Impressions_by_IP > output.csv
+    node dynamoDBtoCSV.js -v "{}" -t Hourly_ZEDO_Impressions_by_IP > output.csv
 
 or even:
 
-    node dynamoDBtoCSV.js -t Hourly_ZEDO_Impressions_by_IP -f output.csv
+    node dynamoDBtoCSV.js -v "{}" -t Hourly_ZEDO_Impressions_by_IP -f output.csv
 
 to export to CSV
 

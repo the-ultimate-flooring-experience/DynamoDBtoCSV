@@ -217,8 +217,14 @@ const unparseData = (lastEvaluatedKey) => {
   });
   if (writeCount > 0) {
     // remove column names after first write chunk.
-    endData = endData.replace(/(.*\r\n)/, "");;
+    endData = endData.replace(/(.*\r\n)/, "");
   }
+
+  // ensure each chunk ends with a newline so next chunk doesn't glue to it
+  if (!endData.endsWith("\n")) {
+    endData += "\n";
+  }
+
   if (program.file) {
     writeData(endData);
   } else {
